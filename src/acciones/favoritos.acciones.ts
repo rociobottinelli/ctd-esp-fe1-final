@@ -1,7 +1,6 @@
 import { Action, ActionCreator } from "@reduxjs/toolkit";
 import {Personaje} from "../types/personaje.types";
 
-//crear interfaces
 export interface AgregarFavAction extends Action {
   type: "AGREGAR_FAVORITO";
   personaje: Personaje;

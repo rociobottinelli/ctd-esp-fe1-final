@@ -16,7 +16,7 @@ const TarjetaEpisodio = () => {
                 <span>S01E01</span>
                 <span>Lanzado el: April 7, 2014</span>
             </div>
-    </div>
+tarjeta-episodio.componente    </div>
 }
 
 export default TarjetaEpisodio;

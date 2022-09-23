@@ -16,7 +16,7 @@ const estadoInicial: EstadoPersonajes = {
   status: "fetching",
   personajes: [],
   error: null,
-  infoPag: { count: 0, pages: 0, next: "", prev: "" }
+  infoPag: { count: 0, pages: 0, next: "", prev: "" },
 };
 
 const personajesReductora: Reducer<EstadoPersonajes, PersonajesAcciones> = (
