@@ -5,7 +5,7 @@
   justify-items: center;
 }
 
-.div-carga{
+.div-carga, .div-not-found{
   height: 500px;
   display: flex;
   flex-direction: column;
