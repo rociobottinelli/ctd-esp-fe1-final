@@ -1,5 +1,8 @@
 import { Action, ActionCreator, ThunkAction } from "@reduxjs/toolkit";
-import { buscarPersonajes, cambioPagina } from "../services/personajes.services";
+import {
+  buscarPersonajes,
+  cambioPagina,
+} from "../services/personajes.services";
 import { EstadoGlobal } from "../store/store";
 import { InfoPag } from "../types/infoPag.types";
 import { Personaje } from "../types/personaje.types";
@@ -12,7 +15,7 @@ export interface IsFetchingPersonajes extends Action {
 export interface IsSuccessPersonajes extends Action {
   type: "IS_SUCCESS_PERSONAJES";
   personajes: Personaje[];
-  infoPag : InfoPag;
+  infoPag: InfoPag;
 }
 
 export interface IsErrorPersonajes extends Action {
@@ -36,7 +39,7 @@ export const isSuccessPersonajes: ActionCreator<IsSuccessPersonajes> = (
   return {
     type: "IS_SUCCESS_PERSONAJES",
     personajes: personajes,
-    infoPag: infoPag
+    infoPag: infoPag,
   };
 };
 
@@ -52,36 +55,31 @@ export const isErrorPersonajes: ActionCreator<IsErrorPersonajes> = (
 export interface BuscarPersonajesThunk
   extends ThunkAction<void, EstadoGlobal, unknown, PersonajesAcciones> {}
 
-
 export const buscarPersonajesThunk = (
   nombre: string
 ): BuscarPersonajesThunk => {
   return async (dispatch, getState) => {
-  dispatch(isFetchingPersonajes(nombre))
+    dispatch(isFetchingPersonajes(nombre));
     try {
-    const response = await buscarPersonajes(nombre);
-    const [personajes, info] = response;
-    dispatch(isSuccessPersonajes(personajes, info));
-  } catch (error) {
-    dispatch(isErrorPersonajes(error))
-  }
-     
-  };
-};
-
-export const cambioPaginaThunk = (url:string): BuscarPersonajesThunk => {
-  return async (dispatch, getState) => {
-    try {
-      const [personajes, info] = await cambioPagina(url);
-      dispatch(isSuccessPersonajes(personajes, info))
+      const response = await buscarPersonajes(nombre);
+      const [personajes, info] = response;
+      dispatch(isSuccessPersonajes(personajes, info));
     } catch (error) {
       dispatch(isErrorPersonajes(error));
     }
-  }
-}
+  };
+};
 
-
-
+export const cambioPaginaThunk = (url: string): BuscarPersonajesThunk => {
+  return async (dispatch, getState) => {
+    try {
+      const [personajes, info] = await cambioPagina(url);
+      dispatch(isSuccessPersonajes(personajes, info));
+    } catch (error) {
+      dispatch(isErrorPersonajes(error));
+    }
+  };
+};
 
 export type PersonajesAcciones =
   | ReturnType<typeof isFetchingPersonajes>

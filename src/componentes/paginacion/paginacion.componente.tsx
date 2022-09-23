@@ -31,10 +31,18 @@ const Paginacion: FC = () => {
 
   return (
     <div className="paginacion">
-      <button disabled={prev === null? true: false} className={"primary"} onClick={paginaAnterior}>
+      <button
+        disabled={prev === null ? true : false}
+        className={"primary"}
+        onClick={paginaAnterior}
+      >
         Anterior
       </button>
-      <button disabled={next === null? true: false} className={"primary"} onClick={paginaSiguiente}>
+      <button
+        disabled={next === null ? true : false}
+        className={"primary"}
+        onClick={paginaSiguiente}
+      >
         Siguiente
       </button>
     </div>

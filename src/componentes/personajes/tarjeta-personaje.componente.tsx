@@ -7,17 +7,17 @@ import {
   useSelector as useReduxSelector,
 } from "react-redux";
 import { EstadoGlobal } from "../../store/store";
-import {
-  agregarFav,
-  borrarFav,
-} from "../../acciones/favoritos.acciones";
+import { agregarFav, borrarFav } from "../../acciones/favoritos.acciones";
 /**
  * Tarjeta para cada personaje dentro de la grilla de personajes.
  *
  * Deberás agregar las propiedades necesarias para mostrar los datos de los personajes
  *
  *
- * @returns un JSX element
+ * Esta función presenta la información de cada personaje que llega desde el componente padre
+ * @author Bottinelli Rocío <rociobottinelli@gmail.com>
+ * @param { Personaje } personaje el personaje a aparecer en la tarjeta
+ * @returns {React.ReactElement}} un JSX element
  */
 
 interface PropsTarjetaPersonaje {
@@ -35,7 +35,7 @@ const TarjetaPersonaje = ({
   let esFavorito = favoritos.some((fav) => fav.id === personaje.id);
 
   const toggleFavs = () => {
-    if (esFavorito == false) {
+    if (esFavorito === false) {
       dispatch(agregarFav(personaje));
     } else {
       dispatch(borrarFav(personaje));

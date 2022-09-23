@@ -1,5 +1,5 @@
 import { Action, ActionCreator } from "@reduxjs/toolkit";
-import {Personaje} from "../types/personaje.types";
+import { Personaje } from "../types/personaje.types";
 
 export interface AgregarFavAction extends Action {
   type: "AGREGAR_FAVORITO";
@@ -33,9 +33,7 @@ export const borrarFav: ActionCreator<BorrarFavAction> = (
   };
 };
 
-export const borrarTodosFavs: ActionCreator<
-  BorrarTodosFavAction
-> = () => {
+export const borrarTodosFavs: ActionCreator<BorrarTodosFavAction> = () => {
   return {
     type: "ELIMINAR_TODOS_FAVORITOS",
   };
@@ -44,4 +42,4 @@ export const borrarTodosFavs: ActionCreator<
 export type FavoritosAction =
   | AgregarFavAction
   | BorrarFavAction
-  | BorrarTodosFavAction
+  | BorrarTodosFavAction;

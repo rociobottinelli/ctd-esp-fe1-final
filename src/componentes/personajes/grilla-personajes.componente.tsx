@@ -22,7 +22,7 @@ import { Personaje } from "../../types/personaje.types";
 export const useSelector: TypedUseSelectorHook<EstadoGlobal> = useReduxSelector;
 
 const GrillaPersonajes: FC = () => {
-  const { status, personajes} = useSelector((state) => state.personajes);
+  const { status, personajes } = useSelector((state) => state.personajes);
   const dispatch = useDispatch();
 
   useEffect(() => {
