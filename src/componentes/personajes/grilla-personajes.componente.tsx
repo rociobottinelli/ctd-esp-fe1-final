@@ -8,6 +8,7 @@ import {
 } from "react-redux";
 import { EstadoGlobal } from "../../store/store";
 import { buscarPersonajesThunk } from "../../acciones/personajes.acciones";
+import { Personaje } from "../../types/personaje.types";
 
 /**
  * Grilla de personajes para la pagina de inicio
@@ -21,7 +22,7 @@ import { buscarPersonajesThunk } from "../../acciones/personajes.acciones";
 export const useSelector: TypedUseSelectorHook<EstadoGlobal> = useReduxSelector;
 
 const GrillaPersonajes: FC = () => {
-  const { personajes, status } = useSelector((state) => state.personajes);
+  const { status, personajes} = useSelector((state) => state.personajes);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -38,11 +39,21 @@ const GrillaPersonajes: FC = () => {
         Todo listo para buscar a tu personaje favorito!{" "}
       </div>
     );
-    if (!personajes || personajes.length === 0) return <div className="div-not-found">Lo sentimos, no encontramos el personaje que estás buscando</div>;
+
+  if (personajes.length === 0 || !personajes)
+    return (
+      <div className="div-not-found">
+        Lo sentimos, no encontramos el personaje que estás buscando
+      </div>
+    );
   return (
     <div className="grilla-personajes">
-      {personajes.map((personaje) => {
-        return <TarjetaPersonaje personaje={personaje} />;
+      {personajes.map((per: Personaje) => {
+        return (
+          <div key={per.id}>
+            <TarjetaPersonaje personaje={per} />
+          </div>
+        );
       })}
     </div>
   );

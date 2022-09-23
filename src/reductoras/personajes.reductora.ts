@@ -1,12 +1,14 @@
 import { Personaje } from "../types/personaje.types";
 import { Reducer } from "@reduxjs/toolkit";
 import { PersonajesAcciones } from "../acciones/personajes.acciones";
+import { InfoPag } from "../types/infoPag.types";
 
 interface EstadoPersonajes {
   busqueda: string;
   status: "fetching" | "success" | "error";
   personajes: Personaje[];
   error: string | null;
+  infoPag: InfoPag;
 }
 
 const estadoInicial: EstadoPersonajes = {
@@ -14,6 +16,7 @@ const estadoInicial: EstadoPersonajes = {
   status: "fetching",
   personajes: [],
   error: null,
+  infoPag: { count: 0, pages: 0, next: "", prev: "" }
 };
 
 const personajesReductora: Reducer<EstadoPersonajes, PersonajesAcciones> = (
@@ -34,6 +37,7 @@ const personajesReductora: Reducer<EstadoPersonajes, PersonajesAcciones> = (
         status: "success",
         personajes: action.personajes,
         error: null,
+        infoPag: action.infoPag,
       };
     case "IS_ERROR_PERSONAJES":
       return {
