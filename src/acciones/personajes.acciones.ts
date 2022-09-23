@@ -48,13 +48,12 @@ export const isErrorPersonajes: ActionCreator<IsErrorPersonajes> = (
 export interface BuscarPersonajesThunk
   extends ThunkAction<void, EstadoGlobal, unknown, PersonajesAcciones> {}
 
-const caracteresMinimos:number = 2
 
 export const buscarPersonajesThunk = (
   nombre: string
 ): BuscarPersonajesThunk => {
   return async (dispatch, getState) => {
-    if (nombre.length > caracteresMinimos) {
+  
         try {
             dispatch(isFetchingPersonajes(nombre));
       
@@ -63,8 +62,8 @@ export const buscarPersonajesThunk = (
             dispatch(isSuccessPersonajes(personajes));
           } catch (error) {
             dispatch(isErrorPersonajes(error));
-          }        
-    }
+          }       
+  
   };
 };
 

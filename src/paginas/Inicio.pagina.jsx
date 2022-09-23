@@ -16,7 +16,7 @@ const PaginaInicio: FC = () => {
     const dispatch = useDispatch();
 
     const vaciarFiltros = () => {
-        dispatch(buscarPersonajesThunk("   "))
+        dispatch(buscarPersonajesThunk(""))
     }
 
 

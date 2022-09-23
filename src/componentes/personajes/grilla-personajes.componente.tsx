@@ -25,7 +25,7 @@ const GrillaPersonajes: FC = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(buscarPersonajesThunk("   "));
+    dispatch(buscarPersonajesThunk(""));
   }, [dispatch]);
 
   if (status === "fetching")
